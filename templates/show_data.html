@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Print Data</title>
+</head>
+<style>
+  p {
+      font-size: 20px;
+  }
+</style>
+<body>
+<ul>
+  {% for region in info %}
+  <li>
+    <h1>Назва регіону: {{ region.name_region }}</h1>
+    <p>Загальне населення регіону: {{ region.total_population }}</p>
+    <p>Назва найбільшої країни в регіоні: {{ region.biggest_name_country }}</p>
+    <p>Населення найбільшої країни в регіоні: {{ region.biggest_population_country }}</p>
+    <p>Назва найменшої країни в регіоні: {{ region.smallest_name_country }}</p>
+    <p>Населення найменшої країни в регіоні: {{ region.smallest_population_country }}</p>
+  </li>
+  {% endfor %}
+</ul>
+</body>
+</html>
