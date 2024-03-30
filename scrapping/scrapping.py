@@ -14,15 +14,16 @@ class Country:
 
 
 class CountryParser:
-    def __init__(self, url):
+    def __init__(self, url) -> None:
         self.url = url
 
-    def get_page(self):
+    def get_page(self) -> BeautifulSoup:
         response = requests.get(self.url).content
         soup = BeautifulSoup(response, "html.parser")
         return soup
 
-    def page_find_countries(self, soup: BeautifulSoup):
+    @staticmethod
+    def page_find_countries(soup: BeautifulSoup) -> list[Country]:
         table = soup.select("table > tbody > tr")
         countries = []
         for line in table:
@@ -40,12 +41,12 @@ class CountryParser:
                 ))
         return countries
 
-    def parse(self):
+    def parse(self) -> list[Country]:
         soup = self.get_page()
         return self.page_find_countries(soup)
 
 
-def main_scrapper():
+def main_scrapper() -> list[Country]:
     parser = CountryParser(URL)
     countries = parser.parse()
     return countries

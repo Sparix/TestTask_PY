@@ -6,7 +6,7 @@ from database.db import engine
 from scrapping.scrapping import main_scrapper
 
 
-def get_all_country():
+def get_all_country() -> None:
     countries = main_scrapper()
     for country in countries:
         with Session(engine) as session:
@@ -18,7 +18,7 @@ def get_all_country():
             )
 
 
-def country_save_to_db(db: Session, name: str, population: int, region: str):
+def country_save_to_db(db: Session, name: str, population: int, region: str) -> None:
     try:
         country_save = models.Country(
             name=name,
